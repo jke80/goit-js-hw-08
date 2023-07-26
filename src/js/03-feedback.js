@@ -29,8 +29,12 @@ refs.formEl.addEventListener('submit', onButtonClick);
 
 function onButtonClick(event) {
   event.preventDefault();
-  console.log(localStorage.getItem(FORM_KEY));
-  localStorage.removeItem(FORM_KEY);
+
+  if (localStorage.getItem(FORM_KEY)) {
+    console.log(JSON.parse(localStorage.getItem(FORM_KEY)));
+    localStorage.removeItem(FORM_KEY);
+  } else console.log('localStorage is empty');
+
   refs.formEl.reset();
 }
 
